@@ -204,7 +204,7 @@ DROP TABLE IF EXISTS `device_dns`;
 CREATE TABLE `device_dns` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The id of the device dns record',
   `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
-  `application_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the application this record belongs to',
+  `application_formation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the application to formation mapping this record belongs to',
   `device_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the device this record belongs to',
   `name` varchar(255) NOT NULL COMMENT 'The name of the dns record',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
