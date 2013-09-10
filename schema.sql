@@ -204,13 +204,13 @@ DROP TABLE IF EXISTS `device_dns`;
 CREATE TABLE `device_dns` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The id of the device dns record',
   `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
-  `application_formation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the application to formation mapping this record belongs to',
+  `application_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the application this record belongs to',
   `device_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the device this record belongs to',
   `name` varchar(255) NOT NULL COMMENT 'The name of the dns record',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,26 +334,6 @@ CREATE TABLE `implementation_attribute` (
   `implementation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the implementation',
   `var` varchar(128) NOT NULL COMMENT 'The config variable',
   `val` longtext NOT NULL COMMENT 'The variable value',
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `jump_server`
---
-
-DROP TABLE IF EXISTS `jump_server`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `jump_server` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The id of the jump server',
-  `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
-  `implementation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the implementation this record belongs to',
-  `device_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the device this record belongs to',
-  `region` varchar(64) NOT NULL COMMENT 'The region this server lives in',
-  `private_key` text NOT NULL COMMENT 'The private key that grants the remoteexec user access to this server',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
@@ -524,7 +504,6 @@ CREATE TABLE `queued_job` (
   `timeout_secs` int(11) NOT NULL DEFAULT '60' COMMENT 'Job execution timeout',
   `last_started_at` timestamp NULL DEFAULT NULL COMMENT 'Last time this job was run',
   `last_finished_at` timestamp NULL DEFAULT NULL COMMENT 'Last time this job completed',
-  `last_response` text COMMENT 'The body from the last response of the last execution',
   `result_code` int(11) DEFAULT NULL COMMENT 'HTTP status code',
   `remaining_retries` int(11) NOT NULL DEFAULT '10' COMMENT 'Number of remaining retries before the job is marked as failed',
   `retry_delay_secs` int(11) NOT NULL DEFAULT '60' COMMENT 'Do not retry this job for this number of seconds',
@@ -578,29 +557,6 @@ CREATE TABLE `role_profile` (
   `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
   `role_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the role',
   `profile_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the profile',
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `script`
---
-
-DROP TABLE IF EXISTS `script`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `script` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The id of the script',
-  `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
-  `model` varchar(255) NOT NULL COMMENT 'The model this record is associated with',
-  `foreign_key_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the foreign record this record belongs to',
-  `name` varchar(128) NOT NULL COMMENT 'The name of the script',
-  `type` enum('git') NOT NULL DEFAULT 'git' COMMENT 'The source type of this record',
-  `url` varchar(255) NOT NULL COMMENT 'The url of the script source',
-  `path` varchar(255) DEFAULT NULL COMMENT 'Optional path to module within the git repository',
-  `parameters` text COMMENT 'Optional string of parameters that will be passed to the script during execution',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
@@ -930,4 +886,4 @@ CREATE TABLE `user_team` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-01  0:04:08
+-- Dump completed on 2013-08-15  1:40:29
