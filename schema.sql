@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.10, for Linux (x86_64)
+-- MySQL dump 10.14  Distrib 10.0.6-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: strings
 -- ------------------------------------------------------
--- Server version	5.6.10-log
+-- Server version	10.0.6-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -168,8 +168,8 @@ CREATE TABLE `device` (
   `blueprint_part_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the blueprint part this record belongs to',
   `role_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the role this device belongs to',
   `name` varchar(128) NOT NULL COMMENT 'The name of the device',
-  `status` enum('building','resizing','active','deleting','error') DEFAULT 'building' COMMENT 'The status of this device',
-  `can_sync_to_ldap` tinyint(1) DEFAULT '0' COMMENT 'Whether this device should be synced to ldap',
+  `status` enum('building','resizing','active','deleting','error') NOT NULL DEFAULT 'building',
+  `can_sync_to_ldap` tinyint(1) NOT NULL DEFAULT '0',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
@@ -360,7 +360,7 @@ CREATE TABLE `jump_server` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -439,6 +439,7 @@ CREATE TABLE `organization` (
   `name` varchar(64) NOT NULL COMMENT 'The name of the organization',
   `short_name` varchar(64) NOT NULL COMMENT 'A short name for the organization',
   `is_disabled` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Whether or not this organization is disabled',
+  `can_sync_to_ldap` tinyint(1) NOT NULL DEFAULT '0',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
@@ -792,7 +793,7 @@ CREATE TABLE `team_formation` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -828,7 +829,7 @@ CREATE TABLE `team_role` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -846,7 +847,7 @@ CREATE TABLE `team_role_sudo` (
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -938,4 +939,4 @@ CREATE TABLE `user_team` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-09-10 13:03:22
+-- Dump completed on 2013-12-04 19:32:06
