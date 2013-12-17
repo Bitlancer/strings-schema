@@ -538,6 +538,8 @@ CREATE TABLE `queued_job` (
   `result_code` int(11) DEFAULT NULL COMMENT 'HTTP status code',
   `remaining_retries` int(11) NOT NULL DEFAULT '10' COMMENT 'Number of remaining retries before the job is marked as failed',
   `retry_delay_secs` int(11) NOT NULL DEFAULT '60' COMMENT 'Do not retry this job for this number of seconds',
+  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
