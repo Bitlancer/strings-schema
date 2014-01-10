@@ -80,15 +80,16 @@ UNLOCK TABLES;
 
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
-INSERT INTO `config` VALUES (1,1,'dns.external.domain','bitlancer-infra.net','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (1,1,'dns.external.domain','test-infra.net','2014-01-08 02:18:37','2014-01-08 02:18:37');
 INSERT INTO `config` VALUES (2,1,'dns.external.implementation_id','1','2014-01-08 02:18:37','2014-01-08 02:18:37');
 INSERT INTO `config` VALUES (3,1,'dns.external.region_id','DFW','2014-01-08 02:18:37','2014-01-08 02:18:37');
-INSERT INTO `config` VALUES (4,1,'dns.external.domain_id','3947930','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (4,1,'dns.external.domain_id','','2014-01-08 02:18:37','2014-01-08 02:18:37');
 INSERT INTO `config` VALUES (5,1,'dns.external.record_ttl','300','2014-01-08 02:18:37','2014-01-08 02:18:37');
-INSERT INTO `config` VALUES (6,1,'dns.internal.domain','int.bitlancer-infra.net','2014-01-08 02:18:37','2014-01-08 02:18:37');
-INSERT INTO `config` VALUES (7,1,'dns.internal.network_attribute','implementation.adress.private.4','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (6,1,'dns.internal.domain','int.test-infra.net','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (7,1,'dns.internal.network_attribute','implementation.address.private.4','2014-01-08 02:18:37','2014-01-08 02:18:37');
 INSERT INTO `config` VALUES (8,1,'posix.default_shell','/bin/bash','2014-01-08 02:18:37','2014-01-08 02:18:37');
-INSERT INTO `config` VALUES (9,1,'implementation.image_schedule.retention','0','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (9,1,'posix.next_uid','1001','2014-01-08 02:18:37','2014-01-08 02:18:37');
+INSERT INTO `config` VALUES (10,1,'implementation.image_schedule.retention','0','2014-01-08 02:18:37','2014-01-08 02:18:37');
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -350,7 +351,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `implementation_attribute` WRITE;
 /*!40000 ALTER TABLE `implementation_attribute` DISABLE KEYS */;
-INSERT INTO `implementation_attribute` VALUES (1,1,1,'username','bitlancer3','2014-01-08 03:15:47','2014-01-08 03:15:47');
+INSERT INTO `implementation_attribute` VALUES (1,1,1,'username','test3','2014-01-08 03:15:47','2014-01-08 03:15:47');
 INSERT INTO `implementation_attribute` VALUES (2,1,1,'api_key','','2014-01-08 03:15:47','2014-01-08 03:15:47');
 INSERT INTO `implementation_attribute` VALUES (3,1,1,'identity_api_endpoint','https://identity.api.rackspacecloud.com/v2.0/','2014-01-08 03:15:47','2014-01-08 03:15:47');
 INSERT INTO `implementation_attribute` VALUES (4,1,1,'default_image','da1f0392-8c64-468f-a839-a9e56caebf07','2014-01-08 03:15:47','2014-01-08 03:15:47');
@@ -399,7 +400,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `organization` WRITE;
 /*!40000 ALTER TABLE `organization` DISABLE KEYS */;
-INSERT INTO `organization` VALUES (1,'Bitlancer LLC','bitlancer',0,0,'2014-01-08 02:16:50','2014-01-08 02:16:50');
+INSERT INTO `organization` VALUES (1,'test LLC','test',0,0,'2014-01-08 02:16:50','2014-01-08 02:16:50');
 /*!40000 ALTER TABLE `organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -634,7 +635,6 @@ LOCK TABLES `user_attribute` WRITE;
 INSERT INTO `user_attribute` VALUES (1,1,1,'posix.uid','1000','2014-01-08 02:16:50','2014-01-08 02:16:50');
 INSERT INTO `user_attribute` VALUES (2,1,1,'posix.gid','1000','2014-01-08 02:16:50','2014-01-08 02:16:50');
 INSERT INTO `user_attribute` VALUES (3,1,1,'posix.shell','/bin/bash','2014-01-08 02:16:50','2014-01-08 02:16:50');
-INSERT INTO `user_attribute` VALUES (5,1,1,'strings.failed_login_attempts','0','2014-01-08 04:11:14','2014-01-08 04:11:14');
 /*!40000 ALTER TABLE `user_attribute` ENABLE KEYS */;
 UNLOCK TABLES;
 
