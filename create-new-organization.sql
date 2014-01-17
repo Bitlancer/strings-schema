@@ -28,8 +28,8 @@ SET @dns_internal_network_attr := 'implementation.address.private.4';
 -- User config
 --
 SET @user_name := 'mjuszczak';
-set @user_first_name := 'Matt';
-set @user_last_name := 'Juszczak';
+SET @user_first_name := 'Matt';
+SET @user_last_name := 'Juszczak';
 SET @user_email := 'mjuszczak@bitlancer.com';
 
 --
