@@ -231,6 +231,17 @@ CREATE TABLE `device_type` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `device_type`
+--
+
+LOCK TABLES `device_type` WRITE;
+/*!40000 ALTER TABLE `device_type` DISABLE KEYS */;
+INSERT INTO `device_type` VALUES (1,'instance','2014-01-08 03:52:46','2014-01-08 03:52:46');
+INSERT INTO `device_type` VALUES (2,'load-balancer','2014-01-08 03:52:46','2014-01-08 03:52:46');
+/*!40000 ALTER TABLE `device_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dictionary`
 --
 
@@ -500,6 +511,16 @@ CREATE TABLE `provider` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `provider`
+--
+
+LOCK TABLES `provider` WRITE;
+/*!40000 ALTER TABLE `provider` DISABLE KEYS */;
+INSERT INTO `provider` VALUES (1,NULL,'Rackspace','2014-01-08 02:16:50','2014-01-08 02:16:50');
+/*!40000 ALTER TABLE `provider` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `provider_attribute`
 --
 
@@ -517,6 +538,18 @@ CREATE TABLE `provider_attribute` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `provider_attribute`
+--
+
+LOCK TABLES `provider_attribute` WRITE;
+/*!40000 ALTER TABLE `provider_attribute` DISABLE KEYS */;
+INSERT INTO `provider_attribute` VALUES (1,NULL,1,'flavors','[{\"id\":2,\"description\":\"512MB Standard Instance (1vCPU/512MB/20GB)\"},{\"id\":3,\"description\":\"1GB Standard Instance (1vCPU/1GB/40GB)\"},{\"id\":4,\"description\":\"2GB Standard Instance (2vCPU/2GB/80GB)\"},{\"id\":5,\"description\":\"4GB Standard Instance (2vCPU/4GB/160GB)\"},{\"id\":6,\"description\":\"8GB Standard Instance (4vCPU/8GB/320GB)\"},{\"id\":7,\"description\":\"15GB Standard Instance (6vCPU/15GB/620GB)\"},{\"id\":8,\"description\":\"30GB Standard Instance (8vCPU/30GB/1200GB)\"},{\"id\":\"performance1-1\",\"description\":\"1 GB Performance Instance (1vCPU/1GB/20GB)\"},{\"id\":\"performance1-2\",\"description\":\"2 GB Performance Instance (2vCPU/2GB/40GB,20GB)\"},{\"id\":\"performance1-4\",\"description\":\"4 GB Performance Instance (4vCPU/4GB/40GB,40GB)\"},{\"id\":\"performance1-8\",\"description\":\"8 GB Performance Instance (8vCPU/8GB/40GB,80GB)\"},{\"id\":\"performance2-15\",\"description\":\"15 GB Performance Instance (4vCPU/15GB/40GB,150GB)\"},{\"id\":\"performance2-30\",\"description\":\"30 GB Performance Instance (8vCPU/30GB/40GB,300GB)\"},{\"id\":\"performance2-60\",\"description\":\"60 GB Performance Instance (16vCPU/60GB/40GB,2x300GB)\"},{\"id\":\"performance2-90\",\"description\":\"90 GB Performance Instance (24vCPU/90GB/40GB,3x300GB)\"},{\"id\":\"performance2-120\",\"description\":\"120 GB Performance Instance (32vCPU/120GB/40GB,4x300GB)\"}]','2014-01-08 02:16:50','2014-01-08 02:16:50');
+INSERT INTO `provider_attribute` VALUES (2,NULL,1,'regions','[{\"id\":\"dfw\",\"name\":\"dfw01\",\"description\":\"Dallas/Fort Worth\"},{\"id\":\"ord\",\"name\":\"ord01\",\"description\":\"Chicago\"},{\"id\":\"iad\",\"name\":\"iad01\",\"description\":\"Northern Virginia\"}]','2014-01-17 00:59:44','2014-01-08 02:16:50');
+INSERT INTO `provider_attribute` VALUES (3,NULL,1,'images','{\"dfw\":[{\"name\":\"default\",\"image_id\":\"f70ed7c7-b42e-4d77-83d8-40fa29825b85\"}],\"ord\":[{\"name\":\"default\",\"image_id\":\"f70ed7c7-b42e-4d77-83d8-40fa29825b85\"}],\"iad\":[{\"name\":\"default\",\"image_id\":\"f70ed7c7-b42e-4d77-83d8-40fa29825b85\"}]}','2014-01-17 01:01:26','2014-01-17 01:01:26');
+/*!40000 ALTER TABLE `provider_attribute` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `queued_job`
@@ -637,6 +670,17 @@ CREATE TABLE `service` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `service`
+--
+
+LOCK TABLES `service` WRITE;
+/*!40000 ALTER TABLE `service` DISABLE KEYS */;
+INSERT INTO `service` VALUES (1,NULL,'infrastructure','2014-01-08 02:16:50','2014-01-08 02:16:50');
+INSERT INTO `service` VALUES (2,NULL,'dns','2014-01-08 02:16:50','2014-01-08 02:16:50');
+/*!40000 ALTER TABLE `service` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `service_provider`
 --
 
@@ -653,6 +697,17 @@ CREATE TABLE `service_provider` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `service_provider`
+--
+
+LOCK TABLES `service_provider` WRITE;
+/*!40000 ALTER TABLE `service_provider` DISABLE KEYS */;
+INSERT INTO `service_provider` VALUES (1,NULL,1,1,'2014-01-08 02:16:50','2014-01-08 02:16:50');
+INSERT INTO `service_provider` VALUES (2,NULL,2,1,'2014-01-08 02:16:50','2014-01-08 02:16:50');
+/*!40000 ALTER TABLE `service_provider` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `sudo`
