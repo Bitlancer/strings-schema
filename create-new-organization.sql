@@ -41,7 +41,7 @@ SET @implementation_image_schedule_retention := 0;
 
 SET @implementation_username := 'example';
 SET @implementation_api_key := '';
-SET @implementation_default_image := 'da1f0392-8c64-468f-a839-a9e56caebf07';
+SET @implementation_dfw_image := 'fda1f0392-8c64-468f-a839-a9e56caebf07';
 
 
 -- Main (Run the queries)
@@ -74,7 +74,11 @@ values
   (@org_id, @implementation_id, 'username', @implementation_username),
   (@org_id, @implementation_id, 'api_key', @implementation_api_key),
   (@org_id, @implementation_id, 'identity_api_endpoint', 'https://identity.api.rackspacecloud.com/v2.0/'),
-  (@org_id, @implementation_id, 'default_image', @implementation_default_image);
+  (@org_id, @implementation_id, 'regions', '[{"id":"dfw","name":"dfw01","description":"Dallas/Fort Worth"}]'),
+  (@org_id, @implementation_id, 'images', '{"dfw":[{"name":"default","image_id":"IMAGE_ID"}]}');
+update implementation_attribute
+set val = replace(val,'IMAGE_ID',@implementation_dfw_image)
+where var = 'images' and organization_id = @org_id;
 
 -- Setup the organization's config vars
 insert into config (organization_id, var, val)
