@@ -168,7 +168,7 @@ CREATE TABLE `device` (
   `blueprint_part_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the blueprint part this record belongs to',
   `role_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the role this device belongs to',
   `name` varchar(128) NOT NULL COMMENT 'The name of the device',
-  `status` enum('building','resizing','verify_resize','revert_resize','active','deleting','error') NOT NULL DEFAULT 'building' COMMENT 'The devices status',
+  `status` enum('building','resizing','verify_resize','revert_resize','rebooting','active','deleting','error') NOT NULL DEFAULT 'building' COMMENT 'The devices status',
   `can_sync_to_ldap` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether this device should be synced to ldap',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
