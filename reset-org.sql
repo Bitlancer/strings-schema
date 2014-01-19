@@ -1,6 +1,6 @@
 --
 -- A SQL script for resetting a demo account. It does not touch the IaaS provider settings or blueprints, roles, profiles, etc.
--- WARNING: Prior to running this script, you should delete any active formations within the CP. This will ensure all devices and their corresponding dns entries are deleted. 
+-- WARNING: Prior to running this script, you should delete any active formations within the CP. This will ensure all devices and their corresponding dns entries are deleted on the provider side. 
 --
 
 SET @org_id := 1;
