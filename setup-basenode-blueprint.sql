@@ -48,7 +48,8 @@ insert into module (organization_id, module_source_id, short_name, name)
 values
   (@org_id, @src_id, 'ntp', 'puppetlabs/ntp'),
   (@org_id, @src_id, 'resolvconf', 'thias/resolvconf'),
-  (@org_id, @src_id, 'firewall', 'puppetlabs/firewall');
+  (@org_id, @src_id, 'firewall', 'puppetlabs/firewall'),
+  (@org_id, @src_id, 'puppetdb', 'puppetlabs/db');
 
 -- SSH
 insert into module_source (organization_id, name, url)
@@ -109,7 +110,8 @@ insert into profile_module (organization_id, profile_id, module_id)
   select @org_id, @profile_id, id
   from module
   where organization_id = @org_id and
-    module.name != @roles_module_name
+    module.name != @roles_module_name and
+    module.name != 'puppetlabs/puppetdb'
 );
 
 --
