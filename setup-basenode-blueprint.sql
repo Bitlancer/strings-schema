@@ -47,7 +47,7 @@ set @src_id = (select last_insert_id());
 insert into module (organization_id, module_source_id, short_name, name)
 values
   (@org_id, @src_id, 'ntp', 'puppetlabs/ntp'),
-  (@org_id, @src_id, 'resolveconf', 'thias/resolveconf'),
+  (@org_id, @src_id, 'resolvconf', 'thias/resolvconf'),
   (@org_id, @src_id, 'firewall', 'puppetlabs/firewall');
 
 -- SSH
