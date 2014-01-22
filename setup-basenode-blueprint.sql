@@ -111,7 +111,7 @@ insert into profile_module (organization_id, profile_id, module_id)
   from module
   where organization_id = @org_id and
     module.name != @roles_module_name and
-    module.name != 'puppetlabs/puppetdb'
+    module.name != 'puppetlabs/db'
 );
 
 --
