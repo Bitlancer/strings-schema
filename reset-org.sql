@@ -3,7 +3,7 @@
 -- WARNING: Prior to running this script, you should delete any active formations within the CP. This will ensure all devices and their corresponding dns entries are deleted on the provider side. 
 --
 
-SET @org_id := 1;
+SET @org_id := 4;
 SET @user_name := 'mjuszczak';
 SET @user_first_name := 'Matt';
 SET @user_last_name := 'Juszczak';
@@ -18,7 +18,6 @@ DELETE FROM device WHERE organization_id = @org_id;
 DELETE FROM device_attribute WHERE organization_id = @org_id;
 DELETE FROM device_dns WHERE organization_id = @org_id;
 DELETE FROM formation WHERE organization_id = @org_id;
-DELETE FROM hiera WHERE organization_id = @org_id;
 DELETE FROM queued_job WHERE organization_id = @org_id;
 DELETE FROM queued_job_log WHERE organization_id = @org_id;
 DELETE FROM script WHERE organization_id = @org_id;
