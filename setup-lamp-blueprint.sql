@@ -15,15 +15,28 @@ values
 
 insert into profile (organization_id, name)
 values
-  (@org_id, 'stringed::profile::lamp');
-SET @lamp_profile_id = (SELECT last_insert_id());  
+  (@org_id, 'stringed::profile::apache_phpfpm');
+SET @apache_phpfpm_profile_id = (SELECT last_insert_id());
+
+insert into profile (organization_id, name)
+values
+  (@org_id, 'stringed::profile::mysql');
+SET @mysql_profile_id = (SELECT last_insert_id());
 
 insert into profile_module (organization_id, profile_id, module_id)
 (
-  SELECT @org_id, @lamp_profile_id, id
+  SELECT @org_id, @apache_phpfpm_profile_id, id
   FROM module
   WHERE organization_id = @org_id AND
-    short_name IN ('apache', 'php', 'mysql')
+    short_name IN ('apache', 'php')
+);
+
+insert into profile_module (organization_id, profile_id, module_id)
+(
+  SELECT @org_id, @apache_phpfpm_profile_id, id
+  FROM module
+  WHERE organization_id = @org_id AND
+    short_name IN ('mysql')
 );
 
 insert into role (organization_id, name)
@@ -33,7 +46,8 @@ SET @lamp_role_id = (SELECT last_insert_id());
 
 insert into role_profile (organization_id, role_id, profile_id)
 values
-  (@org_id, @lamp_role_id, @lamp_profile_id);
+  (@org_id, @lamp_role_id, @apache_phpfpm_profile_id),
+  (@org_id, @lamp_role_id, @mysql_profile_id);
 
 insert into blueprint (organization_id, name, short_description, description)
 values
