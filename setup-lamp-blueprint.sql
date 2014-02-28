@@ -2,9 +2,9 @@
 -- Setup a LAMP (Linux Apache PHP MySQL) blueprint
 --
 
-SET @org_id := 3;
-SET @puppetlabs_forge_source_id := 45;
-SET @lamp_role_name := 'eduporiumorg::role::lamp';
+SET @org_id := 4;
+SET @puppetlabs_forge_source_id := 52;
+SET @lamp_role_name := 'omegaorg::role::lamp';
 
 
 insert into module (organization_id, module_source_id, short_name, name)
@@ -33,7 +33,7 @@ insert into profile_module (organization_id, profile_id, module_id)
 
 insert into profile_module (organization_id, profile_id, module_id)
 (
-  SELECT @org_id, @apache_phpfpm_profile_id, id
+  SELECT @org_id, @mysql_profile_id, id
   FROM module
   WHERE organization_id = @org_id AND
     short_name IN ('mysql')
