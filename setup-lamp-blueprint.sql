@@ -4,7 +4,7 @@
 
 SET @org_id := 4;
 SET @puppetlabs_forge_source_id := 52;
-SET @lamp_role_name := 'omegaorg::role::lamp';
+SET @lamp_role_name := 'omegaorg::role::lamp_server';
 
 
 insert into module (organization_id, module_source_id, short_name, name)
