@@ -41,7 +41,7 @@ SET @implementation_image_schedule_retention := 0;
 
 SET @implementation_username := 'example';
 SET @implementation_api_key := '';
-SET @implementation_dfw_image := 'fda1f0392-8c64-468f-a839-a9e56caebf07';
+SET @implementation_dfw_image := 'da1f0392-8c64-468f-a839-a9e56caebf07';
 
 
 -- Main (Run the queries)
