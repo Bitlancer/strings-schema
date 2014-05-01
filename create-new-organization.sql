@@ -201,3 +201,5 @@ values
   (@org_id, @dict_id, 'transpersonally'),
   (@org_id, @dict_id, 'admonished');
 
+-- Setup environments
+insert into environment (organization_id, name) values (@org_id, 'production', @dict_id);
