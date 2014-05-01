@@ -167,6 +167,7 @@ CREATE TABLE `device` (
   `formation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the formation this device belongs to',
   `blueprint_part_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the blueprint part this record belongs to',
   `role_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the role this device belongs to',
+  `environment_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the environment this device belongs to',
   `name` varchar(128) NOT NULL COMMENT 'The name of the device',
   `status` enum('building','resizing','verify_resize','revert_resize','rebooting','active','deleting','error') NOT NULL DEFAULT 'building' COMMENT 'The devices status',
   `can_sync_to_ldap` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether this device should be synced to ldap',
@@ -278,6 +279,20 @@ CREATE TABLE `dictionary_word` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `environment`
+--
+
+CREATE TABLE `environment` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The id of the environment',
+  `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
+  `dictionary_id` bigint(20) unsigned NOT NULL COMMENT 'The id of this environments dictionary',
+  `name` varchar(128) NOT NULL COMMENT 'The name of the environment',
+  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The date and time this record was created',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
 -- Table structure for table `formation`
 --
 
@@ -289,7 +304,7 @@ CREATE TABLE `formation` (
   `organization_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the organization that owns this record',
   `implementation_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the implementation this formation belongs to',
   `blueprint_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the blueprint this record belongs to',
-  `dictionary_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the dictionary this record belongs to',
+  `environment_id` bigint(20) unsigned NOT NULL COMMENT 'The id of the environment this formation belongs to',
   `name` varchar(128) NOT NULL COMMENT 'The name of the formation',
   `status` enum('building','resizing','active','deleting','error') DEFAULT 'building' COMMENT 'The status of this formation',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'The date and time of the last update to this record',
